@@ -1,0 +1,43 @@
+/* Custom Excel Callout */
+.callout[data-callout="excel"] {
+    --callout-icon: lucide-sheet;
+    --callout-color: 33, 115, 70;
+    --callout-border-width: 2.75px;
+    --callout-border-opacity: 1;
+    --callout-radius: 20px;
+    --callout-padding: 0;
+    --callout-title-padding: 8px 16px;
+    --callout-title-size: 18px;
+    --callout-title-weight: 600;
+    --callout-title-color: white;
+    --callout-content-background: white;
+    
+    border-color: black;
+    background-color: white;
+}
+
+.callout[data-callout="excel"] .callout-title {
+    background-color: #217346;
+    margin: 0 calc(var(--callout-border-width) * -1);
+    margin-top: calc(var(--callout-border-width) * -1);
+    border-radius: var(--callout-radius) var(--callout-radius) 0 0;
+    font-family: 'Noto Sans Mono', monospace;
+}
+
+/* Fix icon color explicitly */
+.callout[data-callout="excel"] .callout-icon {
+    color: white;
+}
+
+.callout[data-callout="excel"] .callout-icon svg {
+    width: calc(var(--callout-title-size) * 1.1);
+    height: calc(var(--callout-title-size) * 1.1);
+    stroke: white;
+    fill: none;
+}
+
+/* Content area with minimal top spacing and proper indentation */
+.callout[data-callout="excel"] .callout-content {
+    padding: 0 16px 16px 16px !important; /* No top padding, proper left/right padding */
+    margin-top: -12px !important; /* Stronger negative margin to pull content up */
+}

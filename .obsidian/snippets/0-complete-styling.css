@@ -1,0 +1,784 @@
+/* ============================================
+   COMPLETE CUSTOM THEME CSS SNIPPET
+   ============================================
+   Place this file in: .obsidian/snippets/
+   Enable in: Settings > Appearance > CSS snippets
+   
+   This snippet overrides theme defaults with custom styling
+   ============================================ */
+
+/* ============================================
+   CUSTOM CSS VARIABLES
+   ============================================ */
+
+/* Apply to both light and dark themes */
+.theme-light,
+.theme-dark {
+  /* COLOR SYSTEM
+     -------------------------------------------- */
+  /* Base color configuration using HSL */
+  --base-h: 0;        /* Hue: 0-360 */
+  --base-s: 0%;       /* Saturation: 0-100% */
+  --base-l: 96%;      /* Lightness: 0-100% (will be adjusted for dark theme) */
+  
+  /* Accent color configuration */
+  --accent-h: 201;
+  --accent-s: 17%;
+  --accent-l: 50%;    /* Will be adjusted for dark theme */
+
+  /* TYPOGRAPHY
+     -------------------------------------------- */
+  /* Font families */
+  --font-interface: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Ubuntu, sans-serif;
+  --font-text: var(--font-interface);
+  --font-editor: var(--font-interface);
+  --font-monospace: "JetBrains Mono", "Fira Code", Consolas, "Courier New", monospace;
+  --font-heading: "MonoLisa", "Noto Sans Mono", var(--font-monospace);
+  
+  /* Font sizes */
+  --font-size-base: 16px;
+  --font-size-small: 0.875em;
+  --font-size-smaller: 0.8125em;
+  --font-size-smallest: 0.75em;
+  --font-size-large: 1.125em;
+  --font-size-larger: 1.25em;
+  
+  /* Title and Heading sizes */
+  --title-size: 32px;
+  --h1-size: 26px;
+  --h2-size: 24px;
+  --h3-size: 22px;
+  --h4-size: 21px;
+  --h5-size: 20px;
+  --h6-size: 20px;
+  
+  /* Title and Heading colors */
+  --title-color: #19647E;
+  --h1-color: #5D9B90;
+  --h2-color: #2E7D32;
+  --h3-color: #303F9F;
+  --h4-color: #4CAF50;
+  --h5-color: #FF9800;
+  --h6-color: #FFC107;
+  
+  /* Font weights */
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  
+  /* Title and Heading weights */
+  --title-weight: 700;
+  --h1-weight: 600;
+  --h2-weight: 600;
+  --h3-weight: 580;
+  --h4-weight: 500;
+  --h5-weight: 500;
+  --h6-weight: 500;
+  
+  /* Line heights */
+  --line-height-tight: 1.3;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.75;
+
+  /* SPACING & LAYOUT
+     -------------------------------------------- */
+  /* Spacing scale */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-8: 3rem;
+  
+  /* Layout widths */
+  --line-width: 40rem;
+  --line-width-wide: 45rem;
+  --max-width: 88%;
+  
+  /* Component spacing */
+  --file-margins: var(--space-4) var(--space-4);
+  --nested-padding: 1.1em;
+  --list-indent: 2em;
+  --list-spacing: 0.075em;
+  
+  /* Border radius */
+  --radius-s: 4px;
+  --radius-m: 6px;
+  --radius-l: 8px;
+  --radius-xl: 12px;
+  
+  /* Border widths */
+  --border-width: 1px;
+  --border-width-thick: 2px;
+
+  /* COMPONENT VARIABLES
+     -------------------------------------------- */
+  /* Tables */
+  --table-border-width: var(--border-width);
+  --table-cell-padding: 4px 10px;
+  --table-header-weight: var(--font-weight-medium);
+  --table-text-size: var(--font-size-small);
+  
+  /* Buttons */
+  --button-height: 32px;
+  --button-padding: 0 var(--space-4);
+  --button-radius: var(--radius-s);
+  
+  /* Checkboxes */
+  --checkbox-size: 18px;
+  --checkbox-radius: 50%;
+  --checkbox-border-width: 1px;
+  
+  /* Tags */
+  --tag-size: var(--font-size-smaller);
+  --tag-padding: var(--space-1) var(--space-2);
+  --tag-radius: 14px;
+  --tag-border-width: 1px;
+  
+  /* Tabs */
+  --tab-height: 40px;
+  --tab-radius: 6px;
+  --tab-radius-active: 6px;
+  --tab-padding: 0 var(--space-3);
+}
+
+/* LIGHT THEME SPECIFIC COLORS
+   ============================================ */
+.theme-light {
+  /* Primary backgrounds */
+  --bg-primary: white;
+  --bg-secondary: hsl(var(--base-h), var(--base-s), var(--base-l));
+  --bg-tertiary: hsla(var(--base-h), var(--base-s), calc(var(--base-l) - 50%), 0.12);
+  
+  /* UI element colors */
+  --ui-border: hsl(var(--base-h), var(--base-s), calc(var(--base-l) - 6%));
+  --ui-border-hover: hsl(var(--base-h), var(--base-s), calc(var(--base-l) - 12%));
+  --ui-border-active: hsl(var(--base-h), var(--base-s), calc(var(--base-l) - 20%));
+  
+  /* Text colors */
+  --text-normal: hsl(var(--base-h), var(--base-s), calc(var(--base-l) - 90%));
+  --text-muted: hsl(var(--base-h), calc(var(--base-s) - 20%), calc(var(--base-l) - 50%));
+  --text-faint: hsl(var(--base-h), calc(var(--base-s) - 10%), calc(var(--base-l) - 25%));
+  --text-on-accent: white;
+  
+  /* Accent colors */
+  --accent-primary: hsl(var(--accent-h), var(--accent-s), var(--accent-l));
+  --accent-hover: hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) - 8%));
+  --accent-active: hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) + 6%));
+  
+  /* Semantic colors */
+  --color-red: #d04255;
+  --color-orange: #d5763f;
+  --color-yellow: #e5b567;
+  --color-green: #a8c373;
+  --color-cyan: #73bbb2;
+  --color-blue: #6c99bb;
+  --color-purple: #9e86c8;
+  --color-pink: #b05279;
+  
+  /* Highlights and selections */
+  --text-selection: hsla(var(--accent-h), 50%, calc(var(--base-l) - 20%), 30%);
+  --text-highlight: rgba(255, 225, 0, 0.5);
+  
+  /* Apply to Obsidian's variables */
+  --background-primary: var(--bg-primary);
+  --background-secondary: var(--bg-secondary);
+  --background-secondary-alt: var(--bg-primary);
+  --background-modifier-border: var(--ui-border);
+  --background-modifier-border-hover: var(--ui-border-hover);
+  --background-modifier-border-focus: var(--ui-border-active);
+  --background-modifier-hover: var(--bg-tertiary);
+  
+  --interactive-accent: var(--accent-active);
+  --interactive-accent-hover: var(--accent-primary);
+  --interactive-normal: var(--bg-primary);
+  --interactive-hover: var(--ui-border);
+  
+  --link-color: var(--accent-primary);
+  --link-color-hover: var(--accent-hover);
+  --link-external-color: var(--accent-primary);
+  --link-external-color-hover: var(--accent-hover);
+}
+
+/* DARK THEME SPECIFIC COLORS
+   ============================================ */
+.theme-dark {
+  /* Adjust base values for dark theme */
+  --base-l: 15%;
+  --accent-l: 60%;
+  
+  /* Primary backgrounds */
+  --bg-primary: hsl(var(--base-h), var(--base-s), var(--base-l));
+  --bg-secondary: hsl(var(--base-h), var(--base-s), calc(var(--base-l) - 2%));
+  --bg-tertiary: hsla(var(--base-h), var(--base-s), calc(var(--base-l) + 40%), 0.12);
+  
+  /* UI element colors */
+  --ui-border: hsl(var(--base-h), var(--base-s), calc(var(--base-l) + 6%));
+  --ui-border-hover: hsl(var(--base-h), var(--base-s), calc(var(--base-l) + 12%));
+  --ui-border-active: hsl(var(--base-h), var(--base-s), calc(var(--base-l) + 20%));
+  
+  /* Text colors */
+  --text-normal: hsl(var(--base-h), calc(var(--base-s) - 10%), calc(var(--base-l) + 67%));
+  --text-muted: hsl(var(--base-h), calc(var(--base-s) - 20%), calc(var(--base-l) + 45%));
+  --text-faint: hsl(var(--base-h), calc(var(--base-s) - 10%), calc(var(--base-l) + 20%));
+  --text-on-accent: white;
+  
+  /* Accent colors */
+  --accent-primary: hsl(var(--accent-h), var(--accent-s), var(--accent-l));
+  --accent-hover: hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) + 8%));
+  --accent-active: hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) - 5%));
+  
+  /* Highlights and selections */
+  --text-selection: hsla(var(--accent-h), 50%, 40%, 30%);
+  --text-highlight: rgba(255, 177, 80, 0.3);
+  
+  /* Apply to Obsidian's variables */
+  --background-primary: var(--bg-primary);
+  --background-secondary: var(--bg-secondary);
+  --background-secondary-alt: var(--bg-primary);
+  --background-modifier-border: var(--ui-border);
+  --background-modifier-border-hover: var(--ui-border-hover);
+  --background-modifier-border-focus: var(--ui-border-active);
+  --background-modifier-hover: var(--bg-tertiary);
+  
+  --interactive-accent: var(--accent-active);
+  --interactive-accent-hover: var(--accent-primary);
+  --interactive-normal: var(--bg-tertiary);
+  --interactive-hover: var(--ui-border);
+  
+  --link-color: var(--accent-primary);
+  --link-color-hover: var(--accent-hover);
+  --link-external-color: var(--accent-primary);
+  --link-external-color-hover: var(--accent-hover);
+}
+
+/* ============================================
+   TYPOGRAPHY STYLES
+   ============================================ */
+
+/* Apply base font */
+body {
+  font-family: var(--font-interface) !important;
+  font-size: var(--font-size-base) !important;
+  font-weight: var(--font-weight-normal) !important;
+  line-height: var(--line-height-normal) !important;
+}
+
+/* File title (inline title) */
+.inline-title {
+  font-family: var(--font-heading) !important;
+  font-size: var(--title-size) !important;
+  font-weight: var(--title-weight) !important;
+  color: var(--title-color) !important;
+  line-height: var(--line-height-tight) !important;
+  margin-bottom: 1.5rem !important;
+}
+
+/* Tab title */
+.view-header-title {
+  font-family: var(--font-heading) !important;
+  color: var(--title-color) !important;
+  font-weight: var(--font-weight-semibold) !important;
+}
+
+/* Headings (all views) */
+.markdown-preview-view h1,
+.markdown-preview-view h2,
+.markdown-preview-view h3,
+.markdown-preview-view h4,
+.markdown-preview-view h5,
+.markdown-preview-view h6,
+.markdown-rendered h1,
+.markdown-rendered h2,
+.markdown-rendered h3,
+.markdown-rendered h4,
+.markdown-rendered h5,
+.markdown-rendered h6,
+.markdown-source-view.mod-cm6 .HyperMD-header-1,
+.markdown-source-view.mod-cm6 .HyperMD-header-2,
+.markdown-source-view.mod-cm6 .HyperMD-header-3,
+.markdown-source-view.mod-cm6 .HyperMD-header-4,
+.markdown-source-view.mod-cm6 .HyperMD-header-5,
+.markdown-source-view.mod-cm6 .HyperMD-header-6,
+.markdown-source-view.mod-cm6 .cm-header-1,
+.markdown-source-view.mod-cm6 .cm-header-2,
+.markdown-source-view.mod-cm6 .cm-header-3,
+.markdown-source-view.mod-cm6 .cm-header-4,
+.markdown-source-view.mod-cm6 .cm-header-5,
+.markdown-source-view.mod-cm6 .cm-header-6 {
+  font-family: var(--font-heading) !important;
+  line-height: var(--line-height-tight) !important;
+  margin-top: 1em !important;
+  margin-bottom: 0.5em !important;
+  letter-spacing: -0.02em !important;
+}
+
+/* H1 Styles */
+.markdown-preview-view h1,
+.markdown-rendered h1,
+.markdown-source-view.mod-cm6 .HyperMD-header-1,
+.markdown-source-view.mod-cm6 .cm-header-1 {
+  font-size: var(--h1-size) !important;
+  font-weight: var(--h1-weight) !important;
+  color: var(--h1-color) !important;
+}
+
+/* H2 Styles */
+.markdown-preview-view h2,
+.markdown-rendered h2,
+.markdown-source-view.mod-cm6 .HyperMD-header-2,
+.markdown-source-view.mod-cm6 .cm-header-2 {
+  font-size: var(--h2-size) !important;
+  font-weight: var(--h2-weight) !important;
+  color: var(--h2-color) !important;
+}
+
+/* H3 Styles */
+.markdown-preview-view h3,
+.markdown-rendered h3,
+.markdown-source-view.mod-cm6 .HyperMD-header-3,
+.markdown-source-view.mod-cm6 .cm-header-3 {
+  font-size: var(--h3-size) !important;
+  font-weight: var(--h3-weight) !important;
+  color: var(--h3-color) !important;
+}
+
+/* H4 Styles */
+.markdown-preview-view h4,
+.markdown-rendered h4,
+.markdown-source-view.mod-cm6 .HyperMD-header-4,
+.markdown-source-view.mod-cm6 .cm-header-4 {
+  font-size: var(--h4-size) !important;
+  font-weight: var(--h4-weight) !important;
+  color: var(--h4-color) !important;
+}
+
+/* H5 Styles */
+.markdown-preview-view h5,
+.markdown-rendered h5,
+.markdown-source-view.mod-cm6 .HyperMD-header-5,
+.markdown-source-view.mod-cm6 .cm-header-5 {
+  font-size: var(--h5-size) !important;
+  font-weight: var(--h5-weight) !important;
+  color: var(--h5-color) !important;
+}
+
+/* H6 Styles */
+.markdown-preview-view h6,
+.markdown-rendered h6,
+.markdown-source-view.mod-cm6 .HyperMD-header-6,
+.markdown-source-view.mod-cm6 .cm-header-6 {
+  font-size: var(--h6-size) !important;
+  font-weight: var(--h6-weight) !important;
+  color: var(--h6-color) !important;
+}
+
+/* Paragraphs */
+.markdown-preview-view p,
+.markdown-rendered p {
+  margin-bottom: var(--p-spacing, 1rem) !important;
+}
+
+/* Links */
+.markdown-preview-view a,
+.markdown-rendered a {
+  color: var(--link-color) !important;
+  text-decoration: var(--link-decoration, none) !important;
+}
+
+.markdown-preview-view a:hover,
+.markdown-rendered a:hover {
+  color: var(--link-color-hover) !important;
+  text-decoration: underline !important;
+}
+
+/* Code */
+.markdown-preview-view code,
+.markdown-rendered code,
+.markdown-source-view .cm-inline-code {
+  font-family: var(--font-monospace) !important;
+  font-size: 0.9em !important;
+  background-color: var(--code-background, var(--background-secondary)) !important;
+  padding: 0.2em 0.4em !important;
+  border-radius: var(--radius-s) !important;
+}
+
+.markdown-preview-view pre,
+.markdown-rendered pre {
+  background-color: var(--code-background, var(--background-secondary)) !important;
+  padding: var(--space-4) !important;
+  border-radius: var(--radius-m) !important;
+  overflow-x: auto !important;
+}
+
+/* Blockquotes */
+.markdown-preview-view blockquote,
+.markdown-rendered blockquote {
+  border-left: var(--blockquote-border-thickness, 3px) solid var(--blockquote-border-color, var(--ui-border)) !important;
+  padding-left: var(--nested-padding) !important;
+  margin-left: 0 !important;
+  color: var(--blockquote-color, var(--text-muted)) !important;
+  font-style: var(--blockquote-style, italic) !important;
+}
+
+/* ============================================
+   COMPONENT STYLES
+   ============================================ */
+
+/* Buttons */
+button {
+  height: var(--button-height) !important;
+  padding: var(--button-padding) !important;
+  border-radius: var(--button-radius) !important;
+  background-color: var(--interactive-normal) !important;
+  border: 1px solid var(--background-modifier-border) !important;
+  color: var(--text-normal) !important;
+  font-size: var(--font-size-small) !important;
+  font-weight: var(--font-weight-medium) !important;
+  cursor: pointer !important;
+  transition: all 0.1s ease-in-out !important;
+}
+
+button:hover {
+  background-color: var(--interactive-hover) !important;
+  border-color: var(--background-modifier-border-hover) !important;
+}
+
+button.mod-cta {
+  background-color: var(--interactive-accent) !important;
+  color: var(--text-on-accent) !important;
+  border: none !important;
+}
+
+button.mod-cta:hover {
+  background-color: var(--interactive-accent-hover) !important;
+}
+
+/* Tables */
+.markdown-preview-view table,
+.markdown-rendered table {
+  width: 100% !important;
+  border-collapse: collapse !important;
+  margin: var(--space-4) 0 !important;
+}
+
+.markdown-preview-view th,
+.markdown-preview-view td,
+.markdown-rendered th,
+.markdown-rendered td {
+  padding: var(--table-cell-padding) !important;
+  text-align: left !important;
+  border: var(--table-border-width) solid var(--background-modifier-border) !important;
+}
+
+.markdown-preview-view th,
+.markdown-rendered th {
+  font-weight: var(--table-header-weight) !important;
+  background-color: var(--background-secondary) !important;
+  font-size: var(--table-text-size) !important;
+  color: var(--text-muted) !important;
+}
+
+/* Checkboxes */
+input[type="checkbox"] {
+  width: var(--checkbox-size) !important;
+  height: var(--checkbox-size) !important;
+  border-radius: var(--checkbox-radius) !important;
+  border: var(--checkbox-border-width) solid var(--background-modifier-border) !important;
+  background-color: var(--background-primary) !important;
+  cursor: pointer !important;
+}
+
+input[type="checkbox"]:checked {
+  background-color: var(--interactive-accent) !important;
+  border-color: var(--interactive-accent) !important;
+}
+
+/* Tags */
+.tag,
+a.tag {
+  display: inline-block !important;
+  padding: var(--tag-padding) !important;
+  font-size: var(--tag-size) !important;
+  border-radius: var(--tag-radius) !important;
+  border: var(--tag-border-width) solid var(--background-modifier-border) !important;
+  background-color: var(--tag-background, transparent) !important;
+  color: var(--tag-color, var(--text-muted)) !important;
+  text-decoration: none !important;
+  transition: all 0.1s ease-in-out !important;
+}
+
+.tag:hover,
+a.tag:hover {
+  background-color: var(--tag-background-hover, transparent) !important;
+  border-color: var(--background-modifier-border-hover) !important;
+  color: var(--tag-color-hover, var(--text-normal)) !important;
+}
+
+/* ============================================
+   WORKSPACE CUSTOMIZATION
+   ============================================ */
+
+/* Sidebar */
+.workspace-split.mod-left-split .workspace-leaf-content,
+.workspace-split.mod-right-split .workspace-leaf-content {
+  font-size: var(--font-size-small) !important;
+}
+
+/* File explorer */
+.nav-file-title,
+.nav-folder-title {
+  font-size: var(--font-size-small) !important;
+  font-weight: var(--font-weight-normal) !important;
+}
+
+.nav-file-title:hover,
+.nav-folder-title:hover {
+  background-color: var(--background-modifier-hover) !important;
+}
+
+/* Status bar */
+.status-bar {
+  font-size: var(--font-size-smallest) !important;
+  color: var(--text-muted) !important;
+}
+
+/* Tabs */
+.workspace-tab-header {
+  font-size: var(--font-size-small) !important;
+  height: var(--tab-height) !important;
+  padding: var(--tab-padding) !important;
+  border-radius: var(--tab-radius) !important;
+}
+
+.workspace-tab-header.is-active {
+  border-radius: var(--tab-radius-active) !important;
+}
+
+/* ============================================
+   PLUGIN SUPPORT
+   ============================================ */
+
+/* Dataview */
+.dataview.table-view-table {
+  margin: var(--space-4) 0 !important;
+}
+
+.dataview.table-view-table > thead > tr > th {
+  font-weight: var(--table-header-weight) !important;
+  font-size: var(--table-text-size) !important;
+  color: var(--text-muted) !important;
+  border-bottom: var(--table-border-width) solid var(--background-modifier-border) !important;
+}
+
+/* Calendar plugin */
+#calendar-container {
+  --color-background-day-empty: transparent !important;
+  --color-background-day-active: var(--background-modifier-hover) !important;
+  --color-dot: var(--text-faint) !important;
+  --color-text-day: var(--text-normal) !important;
+  --color-text-today: var(--interactive-accent) !important;
+}
+
+/* Kanban plugin */
+.kanban-plugin {
+  --kanban-border: var(--border-width) !important;
+  background-color: var(--background-primary) !important;
+}
+
+.kanban-plugin__item {
+  background-color: var(--background-primary) !important;
+  border: var(--kanban-border) solid var(--background-modifier-border) !important;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+@media (max-width: 768px) {
+  :root {
+    --font-size-base: 15px !important;
+    --line-width: 100% !important;
+    --file-margins: var(--space-3) var(--space-3) !important;
+  }
+  
+  .inline-title {
+    font-size: 28px !important;
+  }
+  
+  .markdown-preview-view h1,
+  .markdown-rendered h1,
+  .markdown-source-view.mod-cm6 .HyperMD-header-1,
+  .markdown-source-view.mod-cm6 .cm-header-1 {
+    font-size: 24px !important;
+  }
+  
+  .markdown-preview-view h2,
+  .markdown-rendered h2,
+  .markdown-source-view.mod-cm6 .HyperMD-header-2,
+  .markdown-source-view.mod-cm6 .cm-header-2 {
+    font-size: 22px !important;
+  }
+  
+  .markdown-preview-view h3,
+  .markdown-rendered h3,
+  .markdown-source-view.mod-cm6 .HyperMD-header-3,
+  .markdown-source-view.mod-cm6 .cm-header-3 {
+    font-size: 20px !important;
+  }
+  
+  .markdown-preview-view h4,
+  .markdown-rendered h4,
+  .markdown-source-view.mod-cm6 .HyperMD-header-4,
+  .markdown-source-view.mod-cm6 .cm-header-4 {
+    font-size: 19px !important;
+  }
+  
+  .markdown-preview-view h5,
+  .markdown-preview-view h6,
+  .markdown-rendered h5,
+  .markdown-rendered h6,
+  .markdown-source-view.mod-cm6 .HyperMD-header-5,
+  .markdown-source-view.mod-cm6 .HyperMD-header-6,
+  .markdown-source-view.mod-cm6 .cm-header-5,
+  .markdown-source-view.mod-cm6 .cm-header-6 {
+    font-size: 18px !important;
+  }
+}
+
+/* ============================================
+   HELPER CLASSES
+   ============================================ */
+
+/* Width modifiers for content */
+.markdown-preview-view.wide,
+.markdown-source-view.wide {
+  --line-width: var(--line-width-wide) !important;
+}
+
+.markdown-preview-view.max,
+.markdown-source-view.max {
+  --line-width: var(--max-width) !important;
+}
+
+.markdown-preview-view.full,
+.markdown-source-view.full {
+  --line-width: 100% !important;
+}
+
+/* Table modifiers */
+.table-small table {
+  --table-text-size: 0.875em !important;
+}
+
+.table-tiny table {
+  --table-text-size: 0.75em !important;
+}
+
+.table-lines table {
+  --table-border-width: 1px !important;
+}
+
+.table-nowrap table {
+  white-space: nowrap !important;
+}
+
+/* Image modifiers */
+.img-rounded img {
+  border-radius: var(--radius-m) !important;
+}
+
+.img-circle img {
+  border-radius: 50% !important;
+}
+
+.img-shadow img {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Text modifiers */
+.text-small {
+  font-size: var(--font-size-small) !important;
+}
+
+.text-smaller {
+  font-size: var(--font-size-smaller) !important;
+}
+
+.text-large {
+  font-size: var(--font-size-large) !important;
+}
+
+.text-muted {
+  color: var(--text-muted) !important;
+}
+
+.text-faint {
+  color: var(--text-faint) !important;
+}
+
+/* Utility classes */
+.hidden {
+  display: none !important;
+}
+
+.invisible {
+  visibility: hidden !important;
+}
+
+.no-margin {
+  margin: 0 !important;
+}
+
+.no-padding {
+  padding: 0 !important;
+}
+
+/* ============================================
+   SCROLLBARS
+   ============================================ */
+
+/* Webkit browsers */
+::-webkit-scrollbar {
+  width: 12px !important;
+  height: 12px !important;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent !important;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--background-modifier-border) !important;
+  border-radius: 6px !important;
+  border: 3px solid transparent !important;
+  background-clip: padding-box !important;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--background-modifier-border-hover) !important;
+}
+
+/* ============================================
+   SELECTION
+   ============================================ */
+
+::selection {
+  background-color: var(--text-selection) !important;
+  color: var(--text-normal) !important;
+}
+
+/* ============================================
+   FOCUS STATES
+   ============================================ */
+
+:focus {
+  outline: 2px solid var(--interactive-accent) !important;
+  outline-offset: 2px !important;
+}
+
+/* ============================================
+   END OF SNIPPET
+   ============================================ */
