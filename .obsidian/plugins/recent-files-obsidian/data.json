@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "EDATE",
+      "path": "Functions/Date & Time/EDATE.md"
+    },
+    {
       "basename": "ERFC.PRECISE",
       "path": "Functions/Engineering/ERFC.PRECISE.md"
     },
