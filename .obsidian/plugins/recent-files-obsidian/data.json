@@ -1,6 +1,14 @@
 {
   "recentFiles": [
     {
+      "basename": "WRAPROWS",
+      "path": "Functions/Lookup & Reference/WRAPROWS.md"
+    },
+    {
+      "basename": "DROP",
+      "path": "Functions/Lookup & Reference/DROP.md"
+    },
+    {
       "basename": "EDATE",
       "path": "Functions/Date & Time/EDATE.md"
     },
